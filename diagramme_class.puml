@@ -1,0 +1,63 @@
+@startuml
+
+    abstract class User {
+        - first_name : string
+        - last_name : string
+        - email : string
+        - password : string
+        - created_at : Date
+    }
+
+    class Reader {
+        - role : string
+    }
+
+    class Author {
+        - role : string
+    }
+
+    class Admin {
+        - role : string
+    }
+
+
+    class Article {
+
+        - title : string
+        - body : string
+        - created_at: Date
+    }
+
+
+    class Comment {
+
+        - body : string
+        - created_at : Date
+    }
+
+    class Like {
+        - created_at : Date
+    }
+
+    class Category {
+        - name : string
+    }
+    class article_category {
+
+    }
+
+    User <|--- Reader
+    User <|--- Admin
+    User <|--- Author
+
+    Reader "0..*" -- "1..1" Article : has > 
+    Article "0..*" -- "1..1" Author : belongs to >
+    Article "0..*" -- "1..1" Category : belongs to many >
+    Comment "0..*" -- "1..1" Reader : belongs to >
+    Comment "0..*" -- "1..1" Article : has <
+    Reader "0..*" -- "0..*" Article : interact
+    (Reader, Article) .. Like
+    Article "1..*" -- "0..*" Category : belongs to many >
+    (Article, Category) .. ArticleCategory
+
+@enduml
