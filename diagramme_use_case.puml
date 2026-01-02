@@ -1,0 +1,46 @@
+@startuml
+left to right direction
+
+actor  "Visitor" as User
+actor  "Reader"
+actor  "Author"
+actor  "Admin"
+
+User <|-- Reader
+Reader <|-- Author
+User <|-- Admin
+
+rectangle "Système de Blog" {
+
+  (Se connecter) as Login
+
+  Reader -- (Consulter les articles)
+  Reader -- (Lire un article)
+  Reader -- (Commenter un article)
+  Reader -- (Liker un article)
+ 
+  User -- (Lire un article)
+
+  Author -- (Créer un article)
+  Author -- (Modifier ses articles)
+  Author -- (Supprimer ses articles)
+
+  Admin -- (Gérer les catégories)
+  Admin -- (Gérer les utilisateurs)
+  Admin -- (Administrer le système)
+
+
+  (Consulter les articles) ..> Login : <<include>>
+  (Commenter un article) ..> Login : <<include>>
+  (Liker un article) ..> Login : <<include>>
+
+  (Créer un article) ..> Login : <<include>>
+  (Modifier ses articles) ..> Login : <<include>>
+  (Supprimer ses articles) ..> Login : <<include>>
+
+  (Gérer les catégories) ..> Login : <<include>>
+  (Gérer les utilisateurs) ..> Login : <<include>>
+  (Administrer le système) ..> Login : <<include>>
+}
+
+@enduml
