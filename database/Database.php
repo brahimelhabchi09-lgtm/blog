@@ -1,5 +1,10 @@
 <?php
 
+namespace Database;
+
+use Exception;
+use PDO;
+
 class Database{
     public static function getConnection(){
         try {
