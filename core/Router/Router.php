@@ -11,12 +11,12 @@ class Router
 
     }
 
-    public function get(string $uri, string $action){
-        $this->routes['GET'][$uri] = $action;
+    public function get(string $uri, string $action, array $middleware = []){
+        $this->routes['GET'][$uri] = ['action' => $action, 'middleware' => $middleware];
     }
 
-    public function post(string $uri, string $action){
-        $this->routes['POST'][$uri] = $action;
+    public function post(string $uri, string $action, array $middleware = []){
+        $this->routes['POST'][$uri] = ['action' => $action, 'middleware' => $middleware];
     }
 
     public function dispatch()
@@ -25,7 +25,14 @@ class Router
         $requestMethod = $_SERVER['REQUEST_METHOD'];
 
         if (isset($this->routes[$requestMethod][$uri])) {
-            [$controllerName, $methodName] = explode('@', $this->routes[$requestMethod][$uri]);
+            if (!empty($this->routes[$requestMethod][$uri]['middleware'])) {
+                foreach ($this->routes[$requestMethod][$uri]['middleware'] as $middlewareClass) {
+                    $middlewareName = "App\Middleware\\$middlewareClass";
+                    $middleware = new $middlewareName();
+                    $middleware->handle();
+                }
+            }
+            [$controllerName, $methodName] = explode('@', $this->routes[$requestMethod][$uri]['action']);
 
             $controllerClass = "App\Controller\\$controllerName";
             $controller = new $controllerClass();

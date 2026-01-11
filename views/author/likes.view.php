@@ -68,86 +68,24 @@
                 <div class="col-span-3">Reaction Type</div>
             </div>
             <div class="flex flex-col divide-y divide-surface-border">
-                <div class="grid grid-cols-12 gap-4 px-6 py-4 items-center hover:bg-surface-dark/30 transition-colors">
-                    <div class="col-span-3 flex items-center gap-3">
-                        <div class="size-8 rounded-full bg-surface-border overflow-hidden">
-                            <div class="h-full w-full bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDlf_vVddI2zgwanGvhHJ0717IAWi4ensYRBGJ7hUovUL5kTGuGuFI9ohYC4lXEV1lom7YOWgr1IJrDDAQ8VfzP3R1AIRZeEjjxRyMawE7EhxO_bJbI8EosKOrCP1kQrEA8x9xFVYCVxbmifEbmwcKt5xbjWz_1--9_QvsqJ47HjPZjZp56cPTThEko7iXZB-Jw_vta1kOj81Ueq-oar96oNqz52ZE5ExVt9O6AWbltz-RuMIkC2Gv-7Rtgyp9ZeGTqQtBFchD_7kge');"></div>
-                        </div>
-                        <span class="font-medium text-white">Hermione G.</span>
-                    </div>
-                    <div class="col-span-2">
-                        <span class="inline-flex items-center rounded-full bg-red-900/30 px-2.5 py-0.5 text-xs font-medium text-red-400 border border-red-900/50">Gryffindor</span>
-                    </div>
-                    <div class="col-span-4 italic text-text-parchment/80">10 Uses for Dragon's Blood</div>
-                    <div class="col-span-3 flex items-center gap-2 text-yellow-500">
-                        <span class="material-symbols-outlined text-sm">auto_awesome</span>
-                        <span class="text-sm">Sparkle</span>
-                    </div>
-                </div>
-                <div class="grid grid-cols-12 gap-4 px-6 py-4 items-center hover:bg-surface-dark/30 transition-colors">
-                    <div class="col-span-3 flex items-center gap-3">
-                        <div class="size-8 rounded-full bg-surface-border overflow-hidden">
-                            <div class="h-full w-full bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDS2M_jeoBxBfKIeZBS7rVMr3apm3Y5TTbl6XQTbShydWCvpUgHCuehW2OqGrQ9CnhSUV069n-RkzqcmHcAmfi8J25YNeRFiI1aEvuhjUUof3O9cIz8-JtcjiR4IUuYkWRteFyNkM6_X1xoa-FEbPpno42dj1Tll3yXqDWpfKEE8O9l9xVWOCfi-wrtHkYJ-VpMii9ZJI6HApg3Hzm9Vt1tA6wVgwellEDcbLSqLHwnxx7P-8gPF5GL_FOZsaFNZrOjThmM_DvyU8cw');"></div>
-                        </div>
-                        <span class="font-medium text-white">Luna L.</span>
-                    </div>
-                    <div class="col-span-2">
-                        <span class="inline-flex items-center rounded-full bg-blue-900/30 px-2.5 py-0.5 text-xs font-medium text-blue-400 border border-blue-900/50">Ravenclaw</span>
-                    </div>
-                    <div class="col-span-4 italic text-text-parchment/80">Why Muggles Can't See Hogwarts</div>
-                    <div class="col-span-3 flex items-center gap-2 text-blue-400">
-                        <span class="material-symbols-outlined text-sm">magic_button</span>
-                        <span class="text-sm">Wand Salute</span>
-                    </div>
-                </div>
+            <?php foreach($data as $item): ?>
                 <div class="grid grid-cols-12 gap-4 px-6 py-4 items-center hover:bg-surface-dark/30 transition-colors">
                     <div class="col-span-3 flex items-center gap-3">
                         <div class="size-8 rounded-full bg-surface-border overflow-hidden">
                             <div class="h-full w-full bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCO4NHwnB-cfZrnwTcjesS41WIWVsZ_yYEz-zrOIEGDw6M4VRhA_6Z4SR1LOD2LWuq9SP3cRm_VZdpnOzoEQEC8B0D8cTVVa2qS-8IlmPH3YbV-ugtQDA40cyGgmKZH-MGYfe14KgCTEl7nWTDQndadXGthrgYqMcf1UMMq8_m6ZreOKdXLGBL6wVdtnNFHFijzj5HbLkfqI7tnM-o5NKCTxjd0Xm843UMGzYz7FSub3ZD9PRdGKUWj7ZjE6ItrLc9qd8xcYtm7UlYr');"></div>
                         </div>
-                        <span class="font-medium text-white">Draco M.</span>
+                        <span class="font-medium text-white"><?= $item['reader']->getName() ?></span>
                     </div>
                     <div class="col-span-2">
-                        <span class="inline-flex items-center rounded-full bg-green-900/30 px-2.5 py-0.5 text-xs font-medium text-green-400 border border-green-900/50">Slytherin</span>
+                        <span class="inline-flex items-center rounded-full bg-green-900/30 px-2.5 py-0.5 text-xs font-medium text-green-400 border border-green-900/50"><?= $item['reader']->getRole() ?></span>
                     </div>
-                    <div class="col-span-4 italic text-text-parchment/80">Advanced Potion Making: Tips &amp; Tricks</div>
+                    <div class="col-span-4 italic text-text-parchment/80"><?= $item['article']->getTitle() ?></div>
                     <div class="col-span-3 flex items-center gap-2 text-primary">
                         <span class="material-symbols-outlined text-sm">favorite</span>
                         <span class="text-sm">Heart</span>
                     </div>
                 </div>
-                <div class="grid grid-cols-12 gap-4 px-6 py-4 items-center hover:bg-surface-dark/30 transition-colors">
-                    <div class="col-span-3 flex items-center gap-3">
-                        <div class="size-8 rounded-full bg-surface-border overflow-hidden">
-                            <div class="h-full w-full bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA5N5YBuBd0_Uf_kaU34dYq8Cb2fXIYZZy4nEh4LhLrtNJqE6cXiH-ZTAJWCyVIS40DZU0rqJgi3LItrTLlDIKEMOhIDc9ABeK7w8D7d-ZUpBpsLyxXETp1rBXZW2jWe-OjkQUfu_u5xaocPVyCG-YsgICWZ7vToLjJDmSce0cRL-pAoEG5rJE3Hncg_R4FOh5uYsNJ_CDT2MP7ACmSL48o4fdIOe-yyiV1RDzKMmw7RAMy6WHUAgwuWdFqp2k4ribQpvLuQvYonf_f');"></div>
-                        </div>
-                        <span class="font-medium text-white">Cedric D.</span>
-                    </div>
-                    <div class="col-span-2">
-                        <span class="inline-flex items-center rounded-full bg-yellow-900/30 px-2.5 py-0.5 text-xs font-medium text-yellow-500 border border-yellow-900/50">Hufflepuff</span>
-                    </div>
-                    <div class="col-span-4 italic text-text-parchment/80">The History of Quidditch</div>
-                    <div class="col-span-3 flex items-center gap-2 text-yellow-500">
-                        <span class="material-symbols-outlined text-sm">auto_awesome</span>
-                        <span class="text-sm">Sparkle</span>
-                    </div>
-                </div>
-                <div class="grid grid-cols-12 gap-4 px-6 py-4 items-center hover:bg-surface-dark/30 transition-colors">
-                    <div class="col-span-3 flex items-center gap-3">
-                        <div class="size-8 rounded-full bg-surface-border overflow-hidden">
-                            <div class="h-full w-full bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAE_o_aNjKFIuz_PBbf9GqIuaJeWOF4b50ysSMMAMWd6Ka1TPKj60fvX-HVkENTkOYc5odhqVuE0gn038WQeY1uFR6gWb1nhlelVkKUvEMaWxJ2Ot5qlcrcpSmZeTzn7f0WQH_IAsWQw3Y6AkflXVKaYQVIAw3NEd74aGYWTPg9lPzNycbCY-du3IFqQTSX9vc7cUUleuOT3PvmdA4AXGthR0Auh4e-XRp0xpISOkO-WOKKiepIYmAPN6Xrov_DqqV0GSUDRRLDlqWd');"></div>
-                        </div>
-                        <span class="font-medium text-white">Neville L.</span>
-                    </div>
-                    <div class="col-span-2">
-                        <span class="inline-flex items-center rounded-full bg-red-900/30 px-2.5 py-0.5 text-xs font-medium text-red-400 border border-red-900/50">Gryffindor</span>
-                    </div>
-                    <div class="col-span-4 italic text-text-parchment/80">Advanced Potion Making: Tips &amp; Tricks</div>
-                    <div class="col-span-3 flex items-center gap-2 text-blue-400">
-                        <span class="material-symbols-outlined text-sm">magic_button</span>
-                        <span class="text-sm">Wand Salute</span>
-                    </div>
-                </div>
+            <?php endforeach; ?>
             </div>
         </div>
         <div class="mt-4 flex items-center justify-between border-t border-surface-border pt-4">

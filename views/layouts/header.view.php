@@ -7,11 +7,16 @@
             <h2 class="text-white text-xl font-bold tracking-tight">Hogwarts Intranet</h2>
         </div>
         <nav class="hidden md:flex items-center gap-8">
-            <a class="text-primary text-base font-medium hover:text-white transition-colors border-b-2 border-primary pb-0.5" href="#">Great Hall</a>
-            <a class="text-[#bab59c] text-base font-medium hover:text-white transition-colors hover:border-b-2 hover:border-primary/50 pb-0.5" href="#">Classrooms</a>
-            <a class="text-[#bab59c] text-base font-medium hover:text-white transition-colors hover:border-b-2 hover:border-primary/50 pb-0.5" href="#">Owlery</a>
-            <a class="text-[#bab59c] text-base font-medium hover:text-white transition-colors hover:border-b-2 hover:border-primary/50 pb-0.5" href="#">Library</a>
-            <a class="text-[#bab59c] text-base font-medium hover:text-white transition-colors hover:border-b-2 hover:border-primary/50 pb-0.5" href="#">Dungeons</a>
+            <a class="text-primary text-base font-medium hover:text-white transition-colors border-b-2 border-primary pb-0.5" href="/">Great Hall</a>
+           <?php if (isset($_SESSION['user_id'])): ?>
+            <form action="/logout" method="post" class="inline">
+            <button class="text-[#bab59c] text-base font-medium hover:text-white transition-colors hover:border-b-2 hover:border-primary/50 pb-0.5">logout</button>
+        </form>
+              <?php else: ?>
+            <a class="text-[#bab59c] text-base font-medium hover:text-white transition-colors hover:border-b-2 hover:border-primary/50 pb-0.5" href="/login">login</a>
+            <a class="text-[#bab59c] text-base font-medium hover:text-white transition-colors hover:border-b-2 hover:border-primary/50 pb-0.5" href="/register">register</a>
+            <?php endif; ?>
+                
         </nav>
         <div class="flex items-center gap-3">
             <button class="flex items-center justify-center size-10 rounded-full bg-[#393628] hover:bg-[#4a4634] text-white transition-colors">

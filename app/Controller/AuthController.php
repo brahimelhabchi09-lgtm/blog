@@ -116,6 +116,7 @@ class AuthController extends Controller {
                     if (password_verify($password, $user['password'])) {
                         unset($_SESSION['email'], $_SESSION['password']);
                         $_SESSION['user_id'] = $user['id'];
+                        $_SESSION['user_role'] = $user['role'];
                         $_SESSION['success'] = "Connexion réussie.";
                         header("Location: /");
                         exit();
