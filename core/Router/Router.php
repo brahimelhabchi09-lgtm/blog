@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Core;
+namespace Core\Router;
 
 class Router
 {
@@ -21,13 +21,13 @@ class Router
 
     public function dispatch()
     {
-        $uri = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
+        $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
         $requestMethod = $_SERVER['REQUEST_METHOD'];
 
         if (isset($this->routes[$requestMethod][$uri])) {
             [$controllerName, $methodName] = explode('@', $this->routes[$requestMethod][$uri]);
 
-            $controllerClass = "App\Controllers\$controllerName";
+            $controllerClass = "App\Controller\\$controllerName";
             $controller = new $controllerClass();
             $controller->$methodName();
             return;
