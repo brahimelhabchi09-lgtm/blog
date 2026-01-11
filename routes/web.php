@@ -1,0 +1,33 @@
+<?php
+
+$router->get('/', 'HomeController@index');
+$router->get('/article', 'ReaderController@article');
+$router->get('/articleDetail', 'ReaderController@articleDetail');
+$router->get('/login', 'AuthController@login');
+$router->get('/author/authorDash', 'AuthorController@authorDash');
+$router->get('/admin/category', 'AdminController@category');
+$router->get('/admin/members', 'AdminController@members');
+$router->get('/profile', 'AuthController@profile');
+$router->get('/register', 'AuthController@register');
+$router->post('/login', 'AuthController@submitLogin');
+$router->post('/register', 'AuthController@submitRegister');
+$router->post('/logout', 'AuthController@logout');
+$router->get('/admin', 'AdminController@dashboard');
+$router->get('/admin/category/create', 'CategoryController@create');
+$router->get('/admin/category/edit', 'CategoryController@edit');
+$router->post('/admin/category/store', 'CategoryController@store');
+$router->post('/admin/category/update', 'CategoryController@update');
+$router->post('/admin/category/delete', 'CategoryController@delete');
+$router->get('/author/article/create', 'ArticleController@create');
+$router->get('/author/article/edit', 'ArticleController@edit');
+$router->get('/author/articles', 'AuthorController@manageArticles');
+$router->post('/author/article/store', 'ArticleController@store');
+$router->post('/author/article/update', 'ArticleController@update');
+$router->get('/author/article/delete', 'ArticleController@delete');
+$router->get('/article', 'HomeController@article');
+$router->post('/like', 'LikeController@likeArticle');
+$router->post('/unlike', 'LikeController@unlikeArticle');
+$router->post('/comments/store', 'CommentController@addComment');
+$router->post('/comments/delete', 'CommentController@deleteComment');
+$router->post('/comments/update', 'CommentController@updateComment');
+$router->get('/author/likes', 'AuthorController@likes');
